@@ -1,9 +1,12 @@
 const { poolPromise } = require('../db');
 
-const obtenerProducts = async (req, res) => {
+const obtenerProductos = async (req, res) => {
   try {
     const pool = await poolPromise;
-    const result = await pool.request().query('SELECT * FROM Productos'); // Cambiá si tu tabla se llama distinto
+    const result = await pool.request().query('SELECT TOP 10 * FROM dbo.Articulos');
+
+    console.log('🔎 Resultados:', result.recordset); // ⬅️ Acá
+
     res.json(result.recordset);
   } catch (err) {
     console.error('❌ Error al obtener productos:', err);
@@ -11,4 +14,6 @@ const obtenerProducts = async (req, res) => {
   }
 };
 
-module.exports = { obtenerProducts };
+
+module.exports = { obtenerProductos };
+

@@ -1,0 +1,19 @@
+# Logs
+# node modules
+back/node_modules/
+front/node_modules/
+
+# .env
+back/.env
+front/.env
+
+# builds
+front/dist/
+back/dist/
+
+# logs y sistema
+*.log
+.DS_Store
+Thumbs.db
+
+node_modules
