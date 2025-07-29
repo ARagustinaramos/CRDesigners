@@ -3,7 +3,7 @@ const { poolPromise } = require('../db');
 const obtenerProductos = async (req, res) => {
   try {
     const pool = await poolPromise;
-    const result = await pool.request().query('SELECT TOP 10 * FROM dbo.Articulos');
+    const result = await pool.request().query('SELECT TOP 20 * FROM dbo.Articulos');
 
     console.log('🔎 Resultados:', result.recordset); // ⬅️ Acá
 

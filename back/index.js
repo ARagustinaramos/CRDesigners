@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 
 const productosRoutes = require('./Routes/products');
+const imagenRouter = require("./routes/imagen");
 
 const app = express();
 app.use(cors());
@@ -10,6 +11,7 @@ app.use(express.json());
 
 // Rutas
 app.use('/productos', productosRoutes);
+app.use("/", imagenRouter);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

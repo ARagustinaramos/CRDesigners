@@ -4,12 +4,11 @@ const sql = require('mssql');
 const config = {
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  server: process.env.DB_SERVER.split('\\')[0],
+  server: process.env.DB_SERVER, // incluye la instancia
   database: process.env.DB_DATABASE,
   options: {
     encrypt: false,
     trustServerCertificate: true,
-    instanceName: process.env.DB_SERVER.split('\\')[1],
   },
 };
 

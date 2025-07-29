@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ProductCard from '../components/ProductCard';
+import { Grid, Typography, Container } from '@mui/material';
 
 const Landing = () => {
   const [productos, setProductos] = useState([]);
@@ -12,25 +13,38 @@ const Landing = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 py-10 px-4">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-center text-gray-800 mb-12">Catálogo de Productos</h1>
+    <div style={{
+      minHeight: '100vh',
+      padding: '4rem 1rem',
+      background: 'linear-gradient(to bottom right, #1f2937, #065f46, #84cc16)'
+    }}>
+      <Container maxWidth="lg">
+        <Typography
+          variant="h3"
+          align="center"
+          color="white"
+          gutterBottom
+          sx={{ fontWeight: 'bold', mb: 4 }}
+        >
+          Catálogo de Productos
+        </Typography>
 
         {productos.length === 0 ? (
-          <p className="text-center text-gray-500">Cargando productos...</p>
+          <Typography align="center" color="white" variant="h6">
+            Cargando productos...
+          </Typography>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {productos.map(prod => (
-              <ProductCard key={prod.IdArticulo} producto={prod} />
+          <Grid container spacing={2} sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: 16 }}>
+            {productos.map((prod, index) => (
+              <Grid item key={index}>
+                <ProductCard producto={prod} />
+              </Grid>
             ))}
-          </div>
+          </Grid>
         )}
-      </div>
+      </Container>
     </div>
   );
 };
 
 export default Landing;
-
-
-
